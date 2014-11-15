@@ -13,7 +13,7 @@
 "
 " Save this file to $VIMFILES/ftplugin/python.vim. You can have multiple
 " python ftplugins by creating $VIMFILES/ftplugin/python and saving your
-" ftplugins in that directory. If saving this to the global ftplugin 
+" ftplugins in that directory. If saving this to the global ftplugin
 " directory, this is the recommended method, since vim ships with an
 " ftplugin/python.vim file already.
 "
@@ -24,10 +24,10 @@
 "   [k      -- Jump to beginning of block
 "   ]k      -- Jump to end of block
 "   vik      -- Select (Visual Line Mode) block
-"   [c       -- Jump to previous class  
-"   ]c       -- Jump to next class  
-"   [f       -- Jump to previous function  
-"   ]f       -- Jump to next function  
+"   [c       -- Jump to previous class
+"   ]c       -- Jump to next class
+"   [f       -- Jump to previous function
+"   ]f       -- Jump to next function
 "   vic      -- Select current/previous class
 "   vif      -- Select current/previous function
 
@@ -38,14 +38,14 @@ endif
 let b:loaded_py_ftplugin = 1
 
 map <buffer>   [k   :PBoB<CR>
-vmap <buffer>  [k   :<C-U>PBOB<CR>m'gv``
+vmap <buffer>  [k   :<C-U>PBoB<CR>m'gv``
 map <buffer>   ]k   :PEoB<CR>
 vmap <buffer>  ]k   :<C-U>PEoB<CR>m'gv``
 
-map <buffer>   vik   [kV]k
+vmap <buffer>   ik   [kV]k
 
-map <buffer>   vic   :call PythonSelectObject("class")<CR>
-map <buffer>   vif   :call PythonSelectObject("function")<CR>
+vmap <buffer>   ic   :call PythonSelectObject("class")<CR>
+vmap <buffer>   if   :call PythonSelectObject("function")<CR>
 
 " jump to previous class
 map <buffer>   [c   :call PythonDec("class", -1)<CR>
@@ -75,8 +75,8 @@ function! PythonBoB(line, direction, force_sel_comments)
   let mark = ln
   let indent_valid = strlen(getline(ln))
   let ln = ln + a:direction
-  if (a:direction == 1) && (!a:force_sel_comments) && 
-      \ exists("g:py_select_trailing_comments") && 
+  if (a:direction == 1) && (!a:force_sel_comments) &&
+      \ exists("g:py_select_trailing_comments") &&
       \ (!g:py_select_trailing_comments)
     let sel_comments = 0
   else

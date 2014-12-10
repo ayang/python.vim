@@ -44,8 +44,8 @@ vmap <buffer>  ]k   :<C-U>PEoB<CR>m'gv``
 
 vmap <buffer>   ik   [kV]k
 
-vmap <buffer>   ic   :call PythonSelectObject("class")<CR>
-vmap <buffer>   if   :call PythonSelectObject("function")<CR>
+omap <buffer>   ac   :call PythonSelectObject("class")<CR>
+omap <buffer>   af   :call PythonSelectObject("function")<CR>
 
 " jump to previous class
 map <buffer>   [c   :call PythonDec("class", -1)<CR>
